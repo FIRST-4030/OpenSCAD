@@ -1,0 +1,18 @@
+// Parameters common to all FIRST robots
+
+FIELD_WIDTH      = 141;  // inches
+TILE_WIDTH       = FIELD_WIDTH/6;
+TILE_HEIGHT      = 1;
+FIELD_SCALE      = .98;
+
+TAPE_HEIGHT      = 0.01;
+
+WALL_FRAME_WIDTH = 1;
+WALL_HEIGHT      = 12;
+
+FLOOR_PLATE_WIDTH     = 17.4;
+FLOOR_PLATE_LENGTH    = 45;
+FLOOR_PLATE_HEIGHT    = 1.5;
+FLOOR_LEG_WIDTH       = 2;
+FLOOR_LEG_HEIGHT      = 12;
+FLOOR_BRIDGE_BOTTOM   = 10.5;
