@@ -7,7 +7,13 @@ OpenSCAD is a text based CAD (Computer Aided Design) application that we will be
 
 # Directory Structure
 
-The ‘’OpenSCAN’’ folder is the parent folder for all seasonal competitions. Beneath it are individual folders for each year’s competition. Additionally, there is a folder called **Global** which holds all of the SCAD files used to build a generic field.
+The ‘’OpenSCAD’’ folder is the parent folder for all seasonal competitions. Beneath it are individual folders for each year’s competition. Additionally, there is a folder called **Global** which holds all of the SCAD files used to build a generic field.
+
+Within each competition folder will exist, at a minimum, the following 2 files:
+* xxxField.scad – The SCAD code used to layout the entire field
+* xxxField.png – Screen capture, in a *png* format of the final field
+
+	**Note**: where, “xxx” is the name of the competition (e.g., “Skystone”, “FreightFrenzy”, etc.)
 
 # Git
 
@@ -23,4 +29,4 @@ Git is the configuration management software used to ensure that all files are p
 
 ## Cloning
 
-## 
+##
