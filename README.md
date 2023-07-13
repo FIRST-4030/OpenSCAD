@@ -19,4 +19,4 @@ Within each competition folder will exist, at a minimum, the following 2 files:
 
 All of the OpenSCAD files we use are managed in this Github repository. 
 
-Git is the configuration management software used to ensure that all files are protected as they change over time. OpenSCAD is **not** compatible with Android Studio so specific instructions on using Git must be followed. An extensive description on how Git can be used within our team can be found on our Google Drive at [How To Use Git]( https://drive.google.com/file/d/1Ci7hOdEGSX_p0ja9RH9DupoqMC6KAjk8/view?usp=share_link).
+Git is the configuration management software used to ensure that all files are protected as they change over time. OpenSCAD is **not** compatible with Android Studio so specific instructions on using Git must be followed. An extensive description on how Git can be used within our team can be found on our Google Drive at [Configuration Management Using Git](https://drive.google.com/file/d/1E0qB9r5XMIPRCtl4BFzbJLxQ_rypOifh/view?usp=share_link).
