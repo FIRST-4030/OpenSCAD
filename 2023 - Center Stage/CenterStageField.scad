@@ -63,14 +63,14 @@ module infield_tape() {
             scale([FIELD_SCALE,FIELD_SCALE,1])  rotate([0,0,90]) cube([TAPE_WIDTH,SPIKE_LENGTH,TAPE_HEIGHT],center=false);
         translate([-1*TILE_WIDTH,-1*TILE_WIDTH,1]) 
             scale([FIELD_SCALE,FIELD_SCALE,1])  rotate([0,0,90]) cube([TAPE_WIDTH,SPIKE_LENGTH,TAPE_HEIGHT],center=false);
-        translate([-1*TILE_WIDTH,-2*TILE_WIDTH+6,1]) 
+        translate([-1*TILE_WIDTH-2*TAPE_WIDTH,-2*TILE_WIDTH+6,1]) 
             scale([FIELD_SCALE,FIELD_SCALE,1])  rotate([0,0,0]) cube([TAPE_WIDTH,SPIKE_LENGTH,TAPE_HEIGHT],center=false);
 
         translate([-1*TILE_WIDTH,0,1]) 
             scale([FIELD_SCALE,FIELD_SCALE,1])  rotate([0,0,90]) cube([TAPE_WIDTH,SPIKE_LENGTH,TAPE_HEIGHT],center=false);
         translate([-1*TILE_WIDTH,1*TILE_WIDTH,1]) 
             scale([FIELD_SCALE,FIELD_SCALE,1])  rotate([0,0,90]) cube([TAPE_WIDTH,SPIKE_LENGTH,TAPE_HEIGHT],center=false);
-        translate([-1*TILE_WIDTH,6,1]) 
+        translate([-1*TILE_WIDTH-2*TAPE_WIDTH,6,1]) 
             scale([FIELD_SCALE,FIELD_SCALE,1])  rotate([0,0,0]) cube([TAPE_WIDTH,SPIKE_LENGTH,TAPE_HEIGHT],center=false);
         }
 
@@ -144,16 +144,16 @@ module outfield_tape() {
     }
 }
 
-module truss_legs() {
+module truss_leg(_x) {
 
     color("silver") {
-        translate([3*TILE_WIDTH-WALL_FRAME_WIDTH-FLOOR_LEG_WIDTH,-TILE_WIDTH,1]) 
+        translate([_x,-TILE_WIDTH,1]) 
             scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([-30,0,0]) cube([FLOOR_LEG_WIDTH,FLOOR_LEG_WIDTH,FLOOR_LEG_HEIGHT2],center=false);
 
-        translate([3*TILE_WIDTH-WALL_FRAME_WIDTH-FLOOR_LEG_WIDTH,0,1]) 
+        translate([_x,0,1]) 
             scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([30,0,0]) cube([FLOOR_LEG_WIDTH,FLOOR_LEG_WIDTH,FLOOR_LEG_HEIGHT2],center=false);
 
-        translate([3*TILE_WIDTH-WALL_FRAME_WIDTH-FLOOR_LEG_WIDTH,-.5*TILE_WIDTH-1,19]) 
+        translate([_x,-.5*TILE_WIDTH-1,19]) 
             scale([FIELD_SCALE,FIELD_SCALE,1]) cube([FLOOR_LEG_WIDTH,FLOOR_LEG_WIDTH+3,4],center=false);
     }
 }
@@ -166,7 +166,17 @@ module drawField() {
 
     outfield_tape();
 
-    truss_legs();
+    truss_leg(3*TILE_WIDTH-WALL_FRAME_WIDTH-FLOOR_LEG_WIDTH);
+
+    truss_leg(2*TILE_WIDTH-WALL_FRAME_WIDTH-FLOOR_LEG_WIDTH);
+
+    truss_leg(TILE_WIDTH-WALL_FRAME_WIDTH-FLOOR_LEG_WIDTH);
+
+    truss_leg(-TILE_WIDTH-WALL_FRAME_WIDTH+FLOOR_LEG_WIDTH);
+
+    truss_leg(-2*TILE_WIDTH-WALL_FRAME_WIDTH+FLOOR_LEG_WIDTH);
+
+    truss_leg(-3*TILE_WIDTH-WALL_FRAME_WIDTH+FLOOR_LEG_WIDTH);
 }
 
 drawField();
