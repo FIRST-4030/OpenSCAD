@@ -1,4 +1,4 @@
-//include <CenterStageField.scad>
+include <CenterStageField.scad>
 PRINT_SCALER = 1;  // SET TO 1 FOR INCHES, 25.4 FOR MM
 
 ROBOT_LENGTH = 16.0*PRINT_SCALER;
@@ -10,14 +10,16 @@ WHEEL_WID = 3.0*PRINT_SCALER;
 
 module robot_2D() {
     difference() {
-        square([ROBOT_LENGTH,ROBOT_WIDTH],center=true);
+        square([ROBOT_LENGTH,ROBOT_WIDTH],center=true); // represents robot outline
         
-        translate([6*PRINT_SCALER,0,0]) square([4*PRINT_SCALER,8*PRINT_SCALER],center=true);
+        // represents purple pixel holder in front of robot
+        translate([ROBOT_LENGTH/2,0,0]) square([3*PRINT_SCALER,3*PRINT_SCALER],center=true);
         
-        translate([ROBOT_LENGTH*.3,ROBOT_WIDTH/2,0]) wheel();
-        translate([-ROBOT_LENGTH*.3,ROBOT_WIDTH/2,0]) wheel();
-        translate([ROBOT_LENGTH*.3,-ROBOT_WIDTH/2,0]) wheel();
-        translate([-ROBOT_LENGTH*.3,-ROBOT_WIDTH/2,0]) wheel();
+        // represents robot wheels
+        translate([ROBOT_LENGTH*.3,ROBOT_WIDTH*.45,0]) wheel();
+        translate([-ROBOT_LENGTH*.3,ROBOT_WIDTH*.45,0]) wheel();
+        translate([ROBOT_LENGTH*.3,-ROBOT_WIDTH*.45,0]) wheel();
+        translate([-ROBOT_LENGTH*.3,-ROBOT_WIDTH*.45,0]) wheel();
     }
     module wheel() {
         hull() {
@@ -28,15 +30,12 @@ module robot_2D() {
 }
 *robot_2D($fn=30);  // Turn this line on to export the SVG for Easel
 
-//DrawField();
-
-module robot() {
-    color("silver") // Chassis
+module robot() {  // 3D Chassis
         linear_extrude(ROBOT_HEIGHT) robot_2D();
 }
-robot();  // at the field origin
+color("silver") robot();  // at the field origin
 
 // The following lines draw the robots
-translate([-33,-62,0]) rotate([0,0,90])  color("green") robot(); // Start
-translate([2,-38,0])   rotate([0,0,0]) color("yellow") robot(); // MID_POINT
-translate([18,-24,0])  rotate([0,0,30]) color("blue") robot(); // BLOCK_POINT
+translate([16,-64,0]) rotate([0,0,90]) color("red") robot();  // Start, Backstage, Red
+translate([16,-32,0]) rotate([0,0,90]) color("salmon") robot(); // SPIKE_POINT 2, Backstage, Red
+translate([48,-35,0])  rotate([0,0,00]) color("pink") robot();   // BACKDROP_POINT 2, Center, Red
