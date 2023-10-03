@@ -33,9 +33,29 @@ module robot_2D() {
 module robot() {  // 3D Chassis
         linear_extrude(ROBOT_HEIGHT) robot_2D();
 }
-color("silver") robot();  // at the field origin
 
-// The following lines draw the robots
-translate([16,-64,0]) rotate([0,0,90]) color("red") robot();  // Start, Backstage, Red
-translate([16,-32,0]) rotate([0,0,90]) color("salmon") robot(); // SPIKE_POINT 2, Backstage, Red
-translate([48,-35,0])  rotate([0,0,00]) color("pink") robot();   // BACKDROP_POINT 2, Center, Red
+loc = [
+[-39,-62,0,0,0,90],
+[-42,-40,0,0,0,135],
+[-36,-60,0,0,0,90],
+[-53,-60,0,0,0,90],
+[-53,-12,0,0,0,0],
+[25, -12, 0, 0, 0, 0]
+];
+
+function xyz(t,i) = 
+    lookup(t, [
+        [0/len(loc),loc[0][i]],
+        [1/len(loc),loc[1][i]],
+        [2/len(loc),loc[2][i]],
+        [3/len(loc),loc[3][i]],
+        [4/len(loc),loc[4][i]],
+        [5/len(loc),loc[5][i]]
+    ]
+);
+
+module run_simulation(x,y,z,alpha,beta,phi) {
+    translate([x,y,z]) rotate([alpha,beta,phi])  robot();
+}
+
+run_simulation(xyz($t,0),xyz($t,1),xyz($t,2),xyz($t,3),xyz($t,4),xyz($t,5));

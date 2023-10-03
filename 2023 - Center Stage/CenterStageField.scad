@@ -37,46 +37,6 @@ TRUSS3            = 46.25;
 TRUSS2_OFFSET     = TRUSS3/2 + TRUSS2;
 TRUSS1_OFFSET     = TRUSS2_OFFSET + TRUSS1;
 
-module backdrops() {
-
-    color("black") {
-        translate([60,22,1]) 
-            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([BACKDROP_LENGTH,BACKDROP_WIDTH,2],center=false);
-        translate([60,-47,1]) 
-            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([BACKDROP_LENGTH,BACKDROP_WIDTH,2],center=false);
-    }
-
-    color("white") {
-        translate([65,25,12]) 
-            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([1,20,1],center=false);
-        translate([69,25,19]) 
-            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([1,20,1],center=false);
-        translate([73,25,26]) 
-            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([1,20,1],center=false);
-
-        translate([65,-44,12]) 
-            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([1,20,1],center=false);
-        translate([69,-44,19]) 
-            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([1,20,1],center=false);
-        translate([73,-44,26]) 
-            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([1,20,1],center=false);
-
-        translate([60.5,28,4]) 
-            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([2,2,1],center=false);
-        translate([60.5,34,4]) 
-            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([2,2,1],center=false);
-        translate([60.5,40,4]) 
-            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([2,2,1],center=false);
-
-        translate([60.5,-42,4]) 
-            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([2,2,1],center=false);
-        translate([60.5,-36,4]) 
-            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([2,2,1],center=false);
-        translate([60.5,-30,4]) 
-            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([2,2,1],center=false);
-    }
-}
-
 module infield_tape() {
 
     LONG_DIAGONAL_LENGTH  = sqrt( 2*pow(TILE_WIDTH,2))-3;
@@ -198,6 +158,46 @@ module outfield_tape() {
             scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,0,90]) cube([FIELD_WIDTH,TAPE_WIDTH,TAPE_HEIGHT],center=false);
         translate([-FIELD_WIDTH/2-72,-FIELD_WIDTH/2,1]) 
             scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,0,90]) cube([FIELD_WIDTH,TAPE_WIDTH,TAPE_HEIGHT],center=false);
+    }
+}
+
+module backdrops() {
+
+    color("black") {
+        translate([60,22,1]) 
+            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([BACKDROP_LENGTH,BACKDROP_WIDTH,2],center=false);
+        translate([60,-47,1]) 
+            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([BACKDROP_LENGTH,BACKDROP_WIDTH,2],center=false);
+    }
+
+    color("white") {
+        translate([65,25,12]) 
+            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([1,20,1],center=false);
+        translate([69,25,19]) 
+            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([1,20,1],center=false);
+        translate([73,25,26]) 
+            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([1,20,1],center=false);
+
+        translate([65,-44,12]) 
+            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([1,20,1],center=false);
+        translate([69,-44,19]) 
+            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([1,20,1],center=false);
+        translate([73,-44,26]) 
+            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([1,20,1],center=false);
+
+        translate([60.5,28,4]) 
+            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([2,2,1],center=false);
+        translate([60.5,34,4]) 
+            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([2,2,1],center=false);
+        translate([60.5,40,4]) 
+            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([2,2,1],center=false);
+
+        translate([60.5,-42,4]) 
+            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([2,2,1],center=false);
+        translate([60.5,-36,4]) 
+            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([2,2,1],center=false);
+        translate([60.5,-30,4]) 
+            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,-60,0]) cube([2,2,1],center=false);
     }
 }
 
