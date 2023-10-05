@@ -93,18 +93,18 @@ module infield_tape() {
     }
 
     color("white") {
-        translate([-3*TILE_WIDTH,-2*TILE_WIDTH,1]) 
-            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,0,-90]) cube([TAPE_WIDTH,WHITE_STRIP,TAPE_HEIGHT],center=false);
         translate([-3*TILE_WIDTH,-TILE_WIDTH-WHITE_GAP,1]) 
             scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,0,-90]) cube([TAPE_WIDTH,WHITE_STRIP,TAPE_HEIGHT],center=false);
         translate([-3*TILE_WIDTH,-TILE_WIDTH,1]) 
             scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,0,-90]) cube([TAPE_WIDTH,WHITE_STRIP,TAPE_HEIGHT],center=false);
-
-        translate([-3*TILE_WIDTH,2*TILE_WIDTH,1]) 
+        translate([-3*TILE_WIDTH,-TILE_WIDTH+WHITE_GAP,1]) 
             scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,0,-90]) cube([TAPE_WIDTH,WHITE_STRIP,TAPE_HEIGHT],center=false);
+
         translate([-3*TILE_WIDTH,2*TILE_WIDTH-WHITE_GAP,1]) 
             scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,0,-90]) cube([TAPE_WIDTH,WHITE_STRIP,TAPE_HEIGHT],center=false);
         translate([-3*TILE_WIDTH,TILE_WIDTH,1]) 
+            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,0,-90]) cube([TAPE_WIDTH,WHITE_STRIP,TAPE_HEIGHT],center=false);
+        translate([-3*TILE_WIDTH,TILE_WIDTH-WHITE_GAP,1]) 
             scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,0,-90]) cube([TAPE_WIDTH,WHITE_STRIP,TAPE_HEIGHT],center=false);
     }
 }
