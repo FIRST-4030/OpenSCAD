@@ -2,24 +2,24 @@ include <CenterStageField.scad>
 include <Simulator.scad>
 
 function shiftStart(inX) = -(inX+24);
-function changeHeading(inHeading) = (inHeading==135 ? 45 : (inHeading==45 ? 135 : inHeading));
-function invertLeft(inPos) = -(inPos+24);     
+//function changeHeading(inHeading) = (inHeading==135 ? 45 : (inHeading==45 ? 135 : inHeading));
+function invertLeft(inPos) = -(inPos+34);     
 
 startX = 15;
 startY = -61;
 startHeading = 90;
 
-spike1X = 8;
+spike1X = 8;  
 spike1Y = -35;
-heading1 = 135;
+heading1 = 145; 
 
 spike2X = 11;
 spike2Y = -34;
 heading2 = 90;
 
-spike3X = 17;
+spike3X = 17;  
 spike3Y = -34;
-heading3 = 45;
+heading3 = 55;  
 
 mediaryX = 15;
 mediaryY = -45;
@@ -47,23 +47,30 @@ centerHeading = 0;
 //resetY = -50;
 //resetHeading = -90;
 
-// Spike 1
-locR = [
-    [startX,startY,1,0,0,startHeading],
-    [spike1X,spike1Y,1,0,0,heading1],
-    [mediaryX,mediaryY,1,0,0,mediaryHeading],
-    [backdropX,backdropY1,1,0,0,backdropHeading],
-];
+parkx = 54;
+parkyL = -12;
+parkyR = -60;
 
+// Spike 1
 locL = [
     [shiftStart(startX),startY,1,0,0,startHeading],
-    [invertLeft(spike1X),spike1Y,1,0,0,changeHeading(heading1)],
+    [invertLeft(spike1X),spike1Y,1,0,0,heading1],
     [invertLeft(mediaryX),mediaryY,1,0,0,mediaryHeading],
     [audienceX,audienceY,1,0,0,audienceHeading],
     [travelX,travelY,1,0,0,travelHeading],
     [centerX,centerY,1,0,0,centerHeading],
     [backdropX,backdropY1,1,0,0,backdropHeading],
+    [parkx,parkyL,1,0,0,backdropHeading],
 ];
+
+locR = [
+    [startX,startY,1,0,0,startHeading],
+    [spike1X,spike1Y,1,0,0,heading1],
+    [mediaryX,mediaryY,1,0,0,mediaryHeading],
+    [backdropX,backdropY1,1,0,0,backdropHeading],
+    [parkx,parkyR,1,0,0,backdropHeading],
+];
+
 
 // Spike 2
 //locR = [
@@ -107,6 +114,7 @@ function xyzR(t,i) =
         [1/len(locR),locR[1][i]],
         [2/len(locR),locR[2][i]],
         [3/len(locR),locR[3][i]],
+        [4/len(locR),locR[4][i]],
       ]
 );
 //        [4/len(locR),locR[4][i]],
@@ -120,6 +128,7 @@ function xyzL(t,i) =
         [4/len(locL),locL[4][i]],
         [5/len(locL),locL[5][i]],
         [6/len(locL),locL[6][i]],
+        [7/len(locL),locL[7][i]],
       ]
 );
 
