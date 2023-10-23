@@ -4,11 +4,11 @@ PRINT_SCALER = 1;  // SET TO 1 FOR INCHES, 25.4 FOR MM
 
 ROBOT_LENGTH = 16.0*PRINT_SCALER;
 ROBOT_WIDTH  = 16.0*PRINT_SCALER;
-ROBOT_HEIGHT = 4*PRINT_SCALER;
+ROBOT_HEIGHT = 2*PRINT_SCALER;
 WHEEL_LEN    = 1.5*PRINT_SCALER;
 WHEEL_WID    = 3.0*PRINT_SCALER;
 
-module robot_2D() {
+module robot_2D() {        
     difference() {
         square([ROBOT_LENGTH,ROBOT_WIDTH],center=true); // represents robot outline
         
@@ -28,7 +28,7 @@ module robot_2D() {
         }
     }
 }
-robot_2D($fn=30);  // Turn this line on to export the SVG for Easel
+//robot_2D($fn=30);  // Turn this line on to export the SVG for Easel
 
 module robot() {  // 3D Chassis
     linear_extrude(ROBOT_HEIGHT) robot_2D();
@@ -38,6 +38,9 @@ module robot() {  // 3D Chassis
     }
 }
 
-module RunSimulation(x,y,z,alpha,beta,phi) {
-    translate([x,y,z]) rotate([alpha,beta,phi])  robot();
+
+module RunSimulation(xR,yR,zR,alphaR,betaR,phiR,
+                     xL,yL,zL,alphaL,betaL,phiL) {
+    translate([xR,yR,zR]) rotate([alphaR,betaR,phiR])  robot();
+    translate([xL,yL,zL]) rotate([alphaL,betaL,phiL])  robot();
 }
