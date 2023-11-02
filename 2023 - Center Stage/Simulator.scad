@@ -8,6 +8,9 @@ ROBOT_HEIGHT = 2*PRINT_SCALER;
 WHEEL_LEN    = 1.5*PRINT_SCALER;
 WHEEL_WID    = 3.0*PRINT_SCALER;
 
+function shiftStart(inX) = -(inX+24);
+function invertSpike(inPos) = inPos-47;
+
 module robot_2D() {        
     difference() {
         square([ROBOT_LENGTH,ROBOT_WIDTH],center=true); // represents robot outline
@@ -30,9 +33,11 @@ module robot_2D() {
 }
 //robot_2D($fn=30);  // Turn this line on to export the SVG for Easel
 
-module robot() {  // 3D Chassis
-    linear_extrude(ROBOT_HEIGHT) robot_2D();
-
+module robot(inColor) {  // 3D Chassis
+    color(inColor) { // Intakes
+        linear_extrude(ROBOT_HEIGHT) robot_2D();
+    }
+    
     color("green") { // Intakes
         translate([-7,0,ROBOT_HEIGHT]) rotate([90,90,0]) cylinder(h=5,d=3,center=true,$fn=32);
     }
@@ -41,6 +46,14 @@ module robot() {  // 3D Chassis
 
 module RunSimulation(xR,yR,zR,alphaR,betaR,phiR,
                      xL,yL,zL,alphaL,betaL,phiL) {
-    translate([xR,yR,zR]) rotate([alphaR,betaR,phiR])  robot();
-    translate([xL,yL,zL]) rotate([alphaL,betaL,phiL])  robot();
+    translate([xR,yR,zR]) rotate([alphaR,betaR,phiR])  robot("plum");
+    translate([xL,yL,zL]) rotate([alphaL,betaL,phiL])  robot("lightblue");
+}
+                     
+module RunSimulationL(xL,yL,zL,alphaL,betaL,phiL) {
+    translate([xL,yL,zL]) rotate([alphaL,betaL,phiL])  robot("lightblue");
+}
+
+module RunSimulationR(xR,yR,zR,alphaR,betaR,phiR) {
+    translate([xR,yR,zR]) rotate([alphaR,betaR,phiR])  robot("plum");
 }
