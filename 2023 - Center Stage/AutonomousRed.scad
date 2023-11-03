@@ -1,53 +1,47 @@
 include <CenterStageField.scad>
 include <Simulator.scad>
 
-startX = 15;
-startY = -61;
-startHeading = 90;
+startX          = 15;
+startY          = -61;
+startHeading    = 90;
 
-spike1X = 8;
-spike1Y = -37;
-heading1 = 145; 
+spike1X         = 8;
+spike1Y         = -37;
+heading1        = 145; 
 
-spike2X = 7;
-spike2Y = -36;
-heading2 = 90;
+spike2X         = 7;
+spike2Y         = -36;
+heading2        = 90;
 
-spike3X = 18;
-spike3Y = -37;
-heading3 = 55;  
+spike3X         = 18;
+spike3Y         = -37;
+heading3        = 55;  
 
-mediaryX = 15;
-mediaryY = -47;
-mediaryHeading = 0;
+mediaryX        = 15;
+mediaryY        = -47;
+mediaryHeading  = 0;
 
-backdropX = 49;
+backdropX       = 49;
 backdropHeading = 0;
-backdropY1 = -30;
-backdropY2 = -35;
-backdropY3 = -40;
+backdropY1      = -30;
+backdropY2      = -35;
+backdropY3      = -40;
 
-audienceX = -58;
-audienceY = -40;
+audienceX       = -58;
+audienceY       = -40;
 audienceHeading = 0;
 
-travelX = 35;
-travelY = -12;
-travelHeading = 0;
+travelX         = 35;
+travelY         = -12;
+travelHeading   = 0;
 
-centerX = -58;
-centerY = -11;
-centerHeading = 0;
+centerX         = -58;
+centerY         = -11;
+centerHeading   = 0;
 
-avoidanceX = 30.5;
-avoidanceY = -12;
-avoidanceHeading = 90;
-
-parkx = 46;
-parkyL = -12;
-parkyR = -60;
-
-function invertLeft(inPos) = -(inPos+34);
+parkX           = 46;
+parkyL          = -12;
+parkyR          = -60;
 
 // Spike 1
 //locL = [
@@ -58,7 +52,7 @@ function invertLeft(inPos) = -(inPos+34);
 //    [centerX,centerY,1,0,0,centerHeading],
 //    [travelX,travelY,1,0,0,travelHeading],
 //    [backdropX,backdropY1,1,0,0,backdropHeading],
-//    [parkx,parkyL,1,0,0,backdropHeading],
+//    [parkX,parkyL,1,0,0,backdropHeading],
 //];
 //
 //locR = [
@@ -66,7 +60,7 @@ function invertLeft(inPos) = -(inPos+34);
 //    [spike1X,spike1Y,1,0,0,heading1],
 //    [mediaryX,mediaryY,1,0,0,mediaryHeading],
 //    [backdropX,backdropY1,1,0,0,backdropHeading],
-//    [parkx,parkyR,1,0,0,backdropHeading],
+//    [parkX,parkyR,1,0,0,backdropHeading],
 //];
 
 // Spike 2
@@ -78,7 +72,7 @@ locL = [
     [centerX,centerY,1,0,0,centerHeading],
     [travelX,travelY,1,0,0,travelHeading],
     [backdropX,backdropY2,1,0,0,backdropHeading],
-    [parkx,parkyL,1,0,0,backdropHeading],
+    [parkX,parkyL,1,0,0,backdropHeading],
 ];
 
 locR = [
@@ -86,7 +80,7 @@ locR = [
     [spike2X,spike2Y,1,0,0,heading2],
     [mediaryX,mediaryY,1,0,0,mediaryHeading],
     [backdropX,backdropY2,1,0,0,backdropHeading],
-    [parkx,parkyR,1,0,0,backdropHeading],
+    [parkX,parkyR,1,0,0,backdropHeading],
 ];
 
 // Spike 3
@@ -98,7 +92,7 @@ locR = [
 //    [centerX,centerY,1,0,0,centerHeading],
 //    [travelX,travelY,1,0,0,travelHeading],
 //    [backdropX,backdropY3,1,0,0,backdropHeading],
-//    [parkx,parkyL,1,0,0,backdropHeading],
+//    [parkX,parkyL,1,0,0,backdropHeading],
 //];
 //
 //locR = [
@@ -106,7 +100,7 @@ locR = [
 //    [spike3X,spike3Y,1,0,0,heading3],
 //    [mediaryX,mediaryY,1,0,0,mediaryHeading],
 //    [backdropX,backdropY3,1,0,0,backdropHeading],
-//    [parkx,parkyR,1,0,0,backdropHeading],
+//    [parkX,parkyR,1,0,0,backdropHeading],
 //];
 
 function xyzR(t,i) = 
@@ -137,8 +131,8 @@ function xyzL(t,i) =
 
 //RunSimulationR(xyzR($t,0),xyzR($t,1),xyzR($t,2),xyzR($t,3),xyzR($t,4),xyzR($t,5));
 
-RunSimulation(xyzR($t,0),xyzR($t,1),xyzR($t,2),xyzR($t,3),xyzR($t,4),xyzR($t,5),
-              xyzL($t,0),xyzL($t,1),xyzL($t,2),xyzL($t,3),xyzL($t,4),xyzL($t,5));
+//RunSimulation(xyzR($t,0),xyzR($t,1),xyzR($t,2),xyzR($t,3),xyzR($t,4),xyzR($t,5),
+//              xyzL($t,0),xyzL($t,1),xyzL($t,2),xyzL($t,3),xyzL($t,4),xyzL($t,5));
               
               
               

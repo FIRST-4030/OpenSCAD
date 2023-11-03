@@ -8,8 +8,13 @@ ROBOT_HEIGHT = 2*PRINT_SCALER;
 WHEEL_LEN    = 1.5*PRINT_SCALER;
 WHEEL_WID    = 3.0*PRINT_SCALER;
 
-function shiftStart(inX) = -(inX+24);
-function invertSpike(inPos) = inPos-47;
+function shiftStart(inX)     = -(inX+24);
+function invertSpike(inPos)  = inPos-47;
+function flipHeading(inHead) = inHead-180;  // used on blue side
+function invertRight(inPos)  = -inPos-17;   // used on blue side
+function flipValue(inPos)    = -inPos;      // used on blue side
+
+function invertLeft(inPos) = -(inPos+34);   // used on red side
 
 module robot_2D() {        
     difference() {
@@ -42,7 +47,6 @@ module robot(inColor) {  // 3D Chassis
         translate([-7,0,ROBOT_HEIGHT]) rotate([90,90,0]) cylinder(h=5,d=3,center=true,$fn=32);
     }
 }
-
 
 module RunSimulation(xR,yR,zR,alphaR,betaR,phiR,
                      xL,yL,zL,alphaL,betaL,phiL) {
