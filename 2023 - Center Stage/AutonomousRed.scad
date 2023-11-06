@@ -1,5 +1,5 @@
-include <CenterStageField.scad>
-include <Simulator.scad>
+use <CenterStageField.scad>
+use <Simulator.scad>
 
 startX          = 15;
 startY          = -61;
@@ -134,7 +134,5 @@ function xyzL(t,i) =
 //RunSimulation(xyzR($t,0),xyzR($t,1),xyzR($t,2),xyzR($t,3),xyzR($t,4),xyzR($t,5),
 //              xyzL($t,0),xyzL($t,1),xyzL($t,2),xyzL($t,3),xyzL($t,4),xyzL($t,5));
               
-              
-              
-              
+drawField();
               
