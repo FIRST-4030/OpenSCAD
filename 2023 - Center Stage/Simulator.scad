@@ -58,6 +58,11 @@ module robot(inColor) {  // 3D Chassis
 }
 //robot("blue");
 
+module positionRobot(inColor="white",x=0,y=0,ang=0) {
+    translate([x,y,0]) rotate([0,0,ang]) robot(inColor);
+}
+positionRobot();
+
 module RunSimulation(xR,yR,zR,alphaR,betaR,phiR,
                      xL,yL,zL,alphaL,betaL,phiL) {
     translate([xR,yR,zR]) rotate([alphaR,betaR,phiR])  robot("plum");
