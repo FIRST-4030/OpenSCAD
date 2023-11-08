@@ -1,4 +1,4 @@
-include <Parameters.scad>
+include<Parameters.scad>
 
 // Render an empty field
 
@@ -19,29 +19,25 @@ module field_wall() {
 
     WALL_COLOR = "black";
 
-    color(WALL_COLOR)
-        translate([-FIELD_WIDTH/2+WALL_FRAME_WIDTH,-FIELD_WIDTH/2,1]) 
-            scale([FIELD_SCALE,FIELD_SCALE,1]) cube([FIELD_WIDTH,WALL_FRAME_WIDTH,WALL_FRAME_WIDTH],center=false);
+    color(WALL_COLOR) {
+        translate([-FIELD_WIDTH/2,-FIELD_WIDTH/2-1,0]) 
+            cube([FIELD_WIDTH,WALL_FRAME_WIDTH,WALL_FRAME_WIDTH],center=false);
 
-    color(WALL_COLOR)
-        translate([-FIELD_WIDTH/2+WALL_FRAME_WIDTH,-FIELD_WIDTH/2,WALL_HEIGHT]) 
-            scale([FIELD_SCALE,FIELD_SCALE,1]) cube([FIELD_WIDTH,WALL_FRAME_WIDTH,WALL_FRAME_WIDTH],center=false);
+        translate([-FIELD_WIDTH/2,-FIELD_WIDTH/2-1,WALL_HEIGHT]) 
+            cube([FIELD_WIDTH,WALL_FRAME_WIDTH,WALL_FRAME_WIDTH],center=false);
 
-    color(WALL_COLOR)
-        translate([-FIELD_WIDTH/2,-FIELD_WIDTH/2,1]) 
-            scale([FIELD_SCALE,FIELD_SCALE,1]) cube([WALL_FRAME_WIDTH,WALL_FRAME_WIDTH,WALL_HEIGHT],center=false);
+        translate([-FIELD_WIDTH/2,-FIELD_WIDTH/2-1,0]) 
+            cube([WALL_FRAME_WIDTH,WALL_FRAME_WIDTH,WALL_HEIGHT],center=false);
 
-    color(WALL_COLOR)
-        translate([-FIELD_WIDTH/6,-FIELD_WIDTH/2,1]) 
-            scale([FIELD_SCALE,FIELD_SCALE,1]) cube([WALL_FRAME_WIDTH,WALL_FRAME_WIDTH,WALL_HEIGHT],center=false);
+        translate([-FIELD_WIDTH/6,-FIELD_WIDTH/2-1,0]) 
+            cube([WALL_FRAME_WIDTH,WALL_FRAME_WIDTH,WALL_HEIGHT],center=false);
 
-    color(WALL_COLOR)
-        translate([FIELD_WIDTH/6,-FIELD_WIDTH/2,1]) 
-            scale([FIELD_SCALE,FIELD_SCALE,1]) cube([WALL_FRAME_WIDTH,WALL_FRAME_WIDTH,WALL_HEIGHT],center=false);
+        translate([FIELD_WIDTH/6,-FIELD_WIDTH/2-1,0]) 
+            cube([WALL_FRAME_WIDTH,WALL_FRAME_WIDTH,WALL_HEIGHT],center=false);
 
-    color(WALL_COLOR)
-        translate([FIELD_WIDTH/2-2*WALL_FRAME_WIDTH,-FIELD_WIDTH/2,1]) 
-            scale([FIELD_SCALE,FIELD_SCALE,1]) cube([WALL_FRAME_WIDTH,WALL_FRAME_WIDTH,WALL_HEIGHT],center=false);
+        translate([FIELD_WIDTH/2-WALL_FRAME_WIDTH,-FIELD_WIDTH/2-1,0]) 
+            cube([WALL_FRAME_WIDTH,WALL_FRAME_WIDTH,WALL_HEIGHT],center=false);
+        }
 }
 
 module BuildField() {
@@ -50,9 +46,14 @@ module BuildField() {
 
     field_wall();
 
-    translate( [0, FIELD_WIDTH-2*WALL_FRAME_WIDTH, 0]) field_wall();
+    translate( [0, FIELD_WIDTH+WALL_FRAME_WIDTH, 0]) field_wall();
 
     translate( [0, 0, 0])  rotate([0, 0, 90]) field_wall();
+    
+    translate( [0, 0, 0])  rotate([0, 0, -90]) field_wall();
 
-    translate( [-FIELD_WIDTH+WALL_FRAME_WIDTH, 0, 0])  rotate([0, 0, 90]) field_wall();
+
 }
+BuildField();
+translate([70.5,70.5,0]) circle(r=2,$fn=20);  // size check
+translate([-70.5,-70.5,0]) circle(r=2,$fn=20);  // size check

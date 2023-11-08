@@ -53,7 +53,7 @@ module robot(inColor) {  // 3D Chassis
     }
     
     color("green") { // Intakes
-        translate([-7,0,ROBOT_HEIGHT]) rotate([90,90,0]) cylinder(h=5,d=3,center=true,$fn=32);
+        translate([-7,0,ROBOT_HEIGHT]) rotate([90,90,0]) cylinder(h=5,d=2,center=true,$fn=32);
     }
 }
 //robot("blue");

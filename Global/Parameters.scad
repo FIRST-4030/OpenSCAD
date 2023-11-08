@@ -2,6 +2,7 @@
 
 FIELD_WIDTH      = 141;  // inches
 TILE_WIDTH       = FIELD_WIDTH/6;
+//echo(TILE_WIDTH=TILE_WIDTH);
 TILE_HEIGHT      = 1;
 FIELD_SCALE      = .98;
 

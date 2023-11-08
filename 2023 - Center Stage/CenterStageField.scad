@@ -1,5 +1,5 @@
 include <../Global/Parameters.scad>
-include <../Global/GenericField.scad>
+use <../Global/GenericField.scad>
 
 TAPE_WIDTH = 1;
 
@@ -294,4 +294,15 @@ module drawField() {
     backdrops();
 }
 
-//drawField();
+drawField();
+// April Tag Locations, from AndyMark field, in Road Runner coordinates:
+translate([62, 41.4,  4.6]) circle(3);  // 1
+translate([62, 35.5,  4.6]) circle(3);  // 2
+translate([62,  29.3,  4.6]) circle(3);  // 3
+translate([62,  -29.3, 4.6]) circle(3);  // 4
+translate([62,  -35.5,  4.6]) circle(3);  // 5
+translate([62, -41.4,   4.6]) circle(3);  // 6
+translate([-70.6, -41,  6.0]) circle(4);  // 7
+translate([-70.6,  -35.5, 4.5]) circle(2);  // 8
+translate([-70.6,  35.5,  4.5]) circle(2);  // 9
+translate([-70.6,  41,  6.0]) circle(4);  // 10
