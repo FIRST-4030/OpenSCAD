@@ -2,10 +2,16 @@ include <../Global/Parameters.scad>
 use <CenterStageField.scad>
 use <Simulator.scad>
 
-isBlue = true; // 
-audience = true; //
+showAprilTags = false;
+isBlue = true;
+audience = true;
 spike = 1; // [1,2,3]
+// Shi=4, go=5, rok=6, shichi=7, hachi=8, kyuv=9, juu=10
 DRAWPOSE = "start"; // ["start","spike","Ni","San","none"]
+
+if (showAprilTags) {
+    DisplayAprilTags();
+}
 
 robotColor = isBlue ? "blue" : "red";
 
@@ -13,7 +19,7 @@ startPoseX = audience ? -39 : 15; // -39 = -36-3,  15 = 12+3
 startPoseY = isBlue ? 62.5 : -62.5;
 startPoseAng = isBlue ? -90 : 90;
 if (DRAWPOSE == "start") positionRobot(robotColor,startPoseX,startPoseY,startPoseAng);
-    
+
 // robot Start is shifted left (or right) of tile center. Adjust for spike move
 startShiftX = audience ? 3.7 : -3.7;
 
@@ -49,7 +55,7 @@ if (DRAWPOSE == "San") {
     positionRobot(robotColor,SanX,SanY,SanAng);
 }
 
-drawField();
+DrawField();
 
 //Concatinate moves:
 loc0 = [[startPoseX,startPoseY,startPoseAng]];
