@@ -1,13 +1,17 @@
-include <../Global/Parameters.scad>
+ include <../Global/Parameters.scad>
 use <CenterStageField.scad>
 use <Simulator.scad>
 
+showPosition = true;
 showAprilTags = false;
 isBlue = true;
 audience = true;
 spike = 1; // [1,2,3]
-// Shi=4, go=5, rok=6, shichi=7, hachi=8, kyuv=9, juu=10
-DRAWPOSE = "start"; // ["start","spike","Ni","San","none"]
+
+DRAWPOSE = "start"; // ["start","spike","Ni","San","Shi","Go","Rok","Shichi","none"]
+
+function blueAprilY() = (spike==1) ?  41 : ((spike==2) ?  35 :  29 );
+function redAprilY()  = (spike==1) ? -29 : ((spike==2) ? -35 : -41 );
 
 if (showAprilTags) {
     DisplayAprilTags();
@@ -24,53 +28,83 @@ if (DRAWPOSE == "start") positionRobot(robotColor,startPoseX,startPoseY,startPos
 startShiftX = audience ? 3.7 : -3.7;
 
 spikeDeltaX = (spike == 1) ? (isBlue ? 5 : -5) : ((spike == 2) ? 0 : (isBlue ? -5 : 5) );
-SPIKEX = startPoseX + spikeDeltaX + startShiftX;
+SpikeX = startPoseX + spikeDeltaX + startShiftX;
 
 spikeDeltaY = (spike == 1) ? 28 : ((spike == 2) ? 29 : 26 );
 signedSpikeDeltaY = isBlue ? -spikeDeltaY : spikeDeltaY; 
-SPIKEY = startPoseY + signedSpikeDeltaY;
+SpikeY = startPoseY + signedSpikeDeltaY;
 spikeDeltaAng = (spike == 1) ? 45 : ((spike == 2) ? 0 : -45 );
-SPIKEANG = startPoseAng + spikeDeltaAng;
-if (DRAWPOSE == "spike") {
-    echo(startShiftX=startShiftX);
-    echo(spikeDeltaX=spikeDeltaX);
-    echo(SPIKEX=SPIKEX, SPIKEY=SPIKEY, SPIKEANG=SPIKEANG);
-    positionRobot(robotColor,SPIKEX, SPIKEY, SPIKEANG);
+SpikeAng = startPoseAng + spikeDeltaAng;
+if ((DRAWPOSE == "spike") && (showPosition)) {
+    echo(SpikeX=SpikeX, SpikeY=SpikeY, SpikeAng=SpikeAng);
+    positionRobot(robotColor,SpikeX, SpikeY, SpikeAng);
 }
 
-NiX = audience ? -1.5*TILE_WIDTH : 0.5*TILE_WIDTH;
-NiY = isBlue ? 1.8*TILE_WIDTH : -1.8*TILE_WIDTH;
+NiX = audience ? -36 : 12;
+NiY = isBlue ? 42 : -42;
 NiAng = 0;
-if (DRAWPOSE == "Ni") {
-    echo(NiX=NiX,NiY=NiY);
+if ((DRAWPOSE == "Ni") && (showPosition)) {
     positionRobot(robotColor,NiX,NiY,NiAng);
 }
 
-// San position is where the April Tag is read
-SanX = audience ? -2.4*TILE_WIDTH : 1.5*TILE_WIDTH;
-SanY = isBlue ? 1.8*TILE_WIDTH : -1.8*TILE_WIDTH;
+SanX = audience ? -56 : 35;
+SanY = isBlue ? 42 : -42;
 SanAng = 0;
-if (DRAWPOSE == "San") {
-    echo(SanX=SanX,SanY=SanY);
-    positionRobot(robotColor,SanX,SanY,SanAng);
+if ((DRAWPOSE == "San") && (showPosition)) {
+   positionRobot(robotColor,SanX,SanY,SanAng);
 }
+
+ShiX = audience ? -56 : 35;
+ShiY = isBlue ? (audience ? 12 : 42) : (audience ? -12 : -42);
+ShiAng = 0;
+if ((DRAWPOSE == "Shi") && (showPosition)) {
+    positionRobot(robotColor,ShiX,ShiY,ShiAng);
+}
+
+GoX = audience ? 35 : 35;
+GoY = isBlue ? (audience ? 12 : 42) : (audience ? -12 : -42);
+GoAng = 0;
+if ((DRAWPOSE == "Go") && (showPosition)) {
+    positionRobot(robotColor,GoX,GoY,GoAng);
+}
+
+RokX = 48;
+RokY = isBlue ? blueAprilY() : redAprilY();
+RokAng = 0;
+if ((DRAWPOSE == "Rok") && (showPosition)) {
+    positionRobot(robotColor,RokX,RokY,RokAng);
+}
+
+ShichiX = 48;
+ShichiY =  isBlue ? (audience ? 12 : 55) : (audience ? -12 : -55);
+ShichiAng = 0;
+if ((DRAWPOSE == "Shichi") && (showPosition)) {
+    positionRobot(robotColor,ShichiX,ShichiY,ShichiAng);
+}
+
 
 DrawField();
 
 //Concatinate moves:
 loc0 = [[startPoseX,startPoseY,startPoseAng]];
-loc1 = concat(loc0,[[SPIKEX, SPIKEY, SPIKEANG]]);
+loc1 = concat(loc0,[[SpikeX, SpikeY, SpikeAng]]);
 loc2 = concat(loc1,[[NiX,NiY,NiAng]]);
 loc3 = concat(loc2,[[SanX,SanY,SanAng]]);
-echo(loc3=loc3);
-
+loc4 = concat(loc3,[[ShiX,ShiY,ShiAng]]);
+loc5 = concat(loc4,[[GoX,GoY,GoAng]]);
+loc6 = concat(loc5,[[RokX,RokY,RokAng]]);
+loc7 = concat(loc6,[[ShichiX,ShichiY,ShichiAng]]);
 
 function xyz(t,i) = 
     lookup(t, [
-        [0/len(loc3),loc3[0][i]],
-        [1/len(loc3),loc3[1][i]],
-        [2/len(loc3),loc3[2][i]],
-        [3/len(loc3),loc3[3][i]],
+        [0/len(loc7),loc7[0][i]],
+        [1/len(loc7),loc7[1][i]],
+        [2/len(loc7),loc7[2][i]],
+        [3/len(loc7),loc7[3][i]],
+        [4/len(loc7),loc7[4][i]],
+        [5/len(loc7),loc7[5][i]],
+        [6/len(loc7),loc7[6][i]],
+        [7/len(loc7),loc7[7][i]],
       ]
 );
 

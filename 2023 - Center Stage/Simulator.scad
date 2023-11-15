@@ -9,12 +9,6 @@ ROBOT_HEIGHT = 2*PRINT_SCALER;
 WHEEL_LEN    = 1.4*PRINT_SCALER;
 WHEEL_WID    = 2.0*PRINT_SCALER;
 
-function shiftStart(inX)     = -(inX+24);
-function invertSpike(inPos)  = inPos-47;
-function flipHeading(inHead) = inHead-180;  // used on blue side
-function invertRight(inPos)  = -inPos-17;   // used on blue side
-function flipValue(inPos)    = -inPos;      // used on blue side
-
 function invertLeft(inPos) = -(inPos+34);   // used on red side
 
 module robot_2D() {        
