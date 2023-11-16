@@ -27,13 +27,13 @@ if (DRAWPOSE == "start") positionRobot(robotColor,startPoseX,startPoseY,startPos
 // robot Start is shifted left (or right) of tile center. Adjust for spike move
 startShiftX = audience ? 3.7 : -3.7;
 
-spikeDeltaX = (spike == 1) ? (isBlue ? 5 : -5) : ((spike == 2) ? 0 : (isBlue ? -5 : 5) );
+spikeDeltaX = (spike == 1) ? (isBlue ? 10 : -10) : ((spike == 2) ? 0 : (isBlue ? -5 : 5) );
 SpikeX = startPoseX + spikeDeltaX + startShiftX;
 
 spikeDeltaY = (spike == 1) ? 28 : ((spike == 2) ? 29 : 26 );
 signedSpikeDeltaY = isBlue ? -spikeDeltaY : spikeDeltaY; 
 SpikeY = startPoseY + signedSpikeDeltaY;
-spikeDeltaAng = (spike == 1) ? 45 : ((spike == 2) ? 0 : -45 );
+spikeDeltaAng = (spike == 1) ? 25 : ((spike == 2) ? 0 : -25 );
 SpikeAng = startPoseAng + spikeDeltaAng;
 if ((DRAWPOSE == "spike") && (showPosition)) {
     echo(SpikeX=SpikeX, SpikeY=SpikeY, SpikeAng=SpikeAng);
@@ -48,7 +48,7 @@ if ((DRAWPOSE == "Ni") && (showPosition)) {
 }
 
 SanX = audience ? -56 : 35;
-SanY = isBlue ? 42 : -42;
+SanY = isBlue ? 38 : -38;
 SanAng = 0;
 if ((DRAWPOSE == "San") && (showPosition)) {
    positionRobot(robotColor,SanX,SanY,SanAng);
