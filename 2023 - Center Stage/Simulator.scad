@@ -55,7 +55,7 @@ module robot(inColor) {  // 3D Chassis
 module positionRobot(inColor="white",x=0,y=0,ang=0) {
     translate([x,y,0]) rotate([0,0,ang]) robot(inColor);
 }
-positionRobot();
+positionRobot("blue",-10,-10,360);
 
 module RunSimulation(xR,yR,zR,alphaR,betaR,phiR,
                      xL,yL,zL,alphaL,betaL,phiL) {
