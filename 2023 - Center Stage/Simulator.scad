@@ -42,7 +42,7 @@ module robot_2D() {
 //robot_2D($fn=30);  // Turn this line on to export the SVG for Easel
 
 module robot(inColor) {  // 3D Chassis
-    color(inColor) { // Intakes
+    color(inColor,0.5) { // Intakes
         linear_extrude(ROBOT_HEIGHT) robot_2D();
     }
     

@@ -28,10 +28,23 @@ roboLog = [[-39,-62.5,90], // 1
 [50.092,-29.615,0.049], // good
 [47.912,-13.094,0.292]]; // park good
 
-for(i=[0:1:4]) {
+function convertToPoints(Pose) =
+    let (n = len(Pose))
+    [ for (i=[0:n-1]) [Pose[i][0],Pose[i][1]] ];
+function invertPoints(array) = 
+    let (n = len(array))
+    [ for (i=[n-1:-1:0]) [array[i][0]+1,array[i][1]+1] ];
+        
+PosePoints = convertToPoints(roboLog);
+reversePoints = invertPoints(PosePoints);
+MergePoints = concat(PosePoints,reversePoints);
+color("aqua") translate([0,0,3]) polygon(MergePoints);
+    
+for(i=[0:1:12]) {
     positionRobot("red",roboLog[i][0],roboLog[i][1],roboLog[i][2]);
     *echo(roboLog[i][0],roboLog[i][1],roboLog[i][2]);
 }
 
-positionRobot("yellow",15,-43,45); // test
+
+//positionRobot("yellow",15,-43,45); // test
 DrawField();
