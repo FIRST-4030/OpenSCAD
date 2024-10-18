@@ -40,6 +40,22 @@ module field_wall() {
         }
 }
 
+module labelWalls() {
+    fontSize = 2;
+    baseLevel = 5;
+    
+    color("green") {
+        translate([FIELD_WIDTH/2,0,baseLevel]) 
+            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([90,0,90]) text("X+", size=fontSize);
+        translate([-FIELD_WIDTH/2,0,baseLevel]) 
+            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([90,0,90]) text("X-", size=fontSize);
+        translate([0,FIELD_WIDTH/2,baseLevel]) 
+            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([90,0,0]) text("+Y", size=fontSize);
+        translate([0,-FIELD_WIDTH/2,baseLevel]) 
+            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([90,0,0]) text("Y-", size=fontSize);
+    }
+}
+
 module BuildField() {
 
     field_tiles();
@@ -52,8 +68,9 @@ module BuildField() {
     
     translate( [0, 0, 0])  rotate([0, 0, -90]) field_wall();
 
-
+    labelWalls();
 }
+
 BuildField();
 translate([70.5,70.5,0]) circle(r=2,$fn=20);  // size check
 translate([-70.5,-70.5,0]) circle(r=2,$fn=20);  // size check
