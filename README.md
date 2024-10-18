@@ -1,9 +1,9 @@
 # OpenSCAD
-This is a folder of OpenSCAD files used to simulate our various autonomous goals for FTC team 7462.
+This is a folder of OpenSCAD files used to simulate our various autonomous goals for FTC team 7462 & 8628.
 
-OpenSCAD is a text based CAD (Computer Aided Design) application that we will be using to prototype our efforts at autonomous programming. Once a field is defined then pseudo-robots can be added to show discreet locations that we want the robot to be placed in order to identify coordinates that can be directly fed into ‘’RoadRunner’’.  A sample simulation can be found in the **2019 – Skystone** folder in a file called *Simulator.png* and is pictured below:
+OpenSCAD is a text based CAD (Computer Aided Design) application that we will be using to prototype our efforts at autonomous programming. Once a field is defined then pseudo-robots can be added to show discreet locations that we want the robot to be placed in order to identify coordinates that can be directly fed into ‘’RoadRunner’’.  A sample simulation can be found in the **2024 – Into The Deep** folder in a file called *Simulator.png* and is pictured below:
 
- ![](https://github.com/FIRST-4030/OpenSCAD/blob/main/2019%20-%20Skystone/Simulator.png).
+ ![](https://github.com/FIRST-4030/OpenSCAD/blob/main/2024%20-%20Into%20The%20Deep/Simulator.png).
 
 # Directory Structure
 
