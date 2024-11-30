@@ -55,30 +55,36 @@ module infield_tape() {
     }
 
     // Lower right
-    spikeMark(-3*TILE_WIDTH,-TILE_WIDTH-SPIKE_LENGTH,"white");
-    spikeMark(-2.5*TILE_WIDTH-TAPE_WIDTH,-TILE_WIDTH-SPIKE_LENGTH,"white");
-    spikeMark(-2*TILE_WIDTH-TAPE_WIDTH,-TILE_WIDTH-SPIKE_LENGTH,"white");
-
+    for (i=[0:2]) {
+        spikeMark(i,-2*TILE_WIDTH-TAPE_WIDTH,-TILE_WIDTH-SPIKE_LENGTH,"white","yellow");
+    }
     // Lower left
-    spikeMark(-3*TILE_WIDTH,TILE_WIDTH,"blue");
-    spikeMark(-2.5*TILE_WIDTH-TAPE_WIDTH,TILE_WIDTH,"blue");
-    spikeMark(-2*TILE_WIDTH-TAPE_WIDTH,TILE_WIDTH,"blue");
-    
+    for (i=[0:2]) {
+        spikeMark(i,-2*TILE_WIDTH-TAPE_WIDTH,TILE_WIDTH,"blue","blue");
+    }
     // Upper right
-    spikeMark(3*TILE_WIDTH-WALL_FRAME_WIDTH,-TILE_WIDTH-SPIKE_LENGTH,"red");
-    spikeMark(2.5*TILE_WIDTH-TAPE_WIDTH,-TILE_WIDTH-SPIKE_LENGTH,"red");
-    spikeMark(2*TILE_WIDTH-TAPE_WIDTH,-TILE_WIDTH-SPIKE_LENGTH,"red");
-
+    for (i=[0:2]) {
+        spikeMark(i,2*TILE_WIDTH+TAPE_WIDTH,-TILE_WIDTH-SPIKE_LENGTH,"red","red");
+    }
     // Upper left
-    spikeMark(3*TILE_WIDTH-WALL_FRAME_WIDTH,TILE_WIDTH,"white");
-    spikeMark(2.5*TILE_WIDTH-TAPE_WIDTH,TILE_WIDTH,"white");
-    spikeMark(2*TILE_WIDTH-TAPE_WIDTH,TILE_WIDTH,"white");
+    for (i=[0:2]) {
+        spikeMark(i,2*TILE_WIDTH+TAPE_WIDTH,TILE_WIDTH,"white","yellow");
+    }
 }
 
-module spikeMark(x,y,inColor) {
-    color(inColor) {
-        translate([x,y,1]) 
+module spikeMark(index,x,y,spike_color, sample_color) {
+    SAMPLE_WIDTH  = 1.5;
+    SAMPLE_DEPTH  = 1.5;
+    SAMPLE_HEIGHT = 3.3;
+    OFFSET = -sign(x)*10*index;
+    
+    color(spike_color) {
+        translate([x-OFFSET,y,1]) 
             scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([0,0,0]) cube([TAPE_WIDTH,SPIKE_LENGTH,TAPE_HEIGHT],center=false);
+    }
+    color(sample_color) {
+        translate([x-OFFSET-SAMPLE_WIDTH/2,y+SAMPLE_HEIGHT-0.5,1]) 
+            scale([FIELD_SCALE,FIELD_SCALE,1]) rotate([90,0,0]) cube([SAMPLE_WIDTH,SAMPLE_DEPTH,SAMPLE_HEIGHT],center=false);
     }
 }
 
@@ -268,4 +274,20 @@ module DrawField() {
     baskets();
 }
 
+module DisplayAprilTags() {
+    // April Tag Locations, from AndyMark field, in Road Runner coordinates:
+    aprilTag1 = [-72.6,  -47,   4.0];
+    aprilTag2 = [-72.6,   47,   4.0];
+    aprilTag3 = [ 72.6,   47,   4.0];
+    aprilTag4 = [ 72.6,  -47,   4.0];
+
+    color("white") {
+        translate(aprilTag1 ) translate([1,0,0])  rotate([0, 90,0]) cube([4,4,0.1],center=true);
+        translate(aprilTag2 ) translate([1,0,0])  rotate([0, 90,0]) cube([4,4,0.1],center=true);
+        translate(aprilTag3 ) translate([1,0,0])  rotate([0, 90,0]) cube([4,4,0.1],center=true);
+        translate(aprilTag4 ) translate([1,0,0])  rotate([0, 90,0]) cube([4,4,0.1],center=true);
+    }
+}
+
 DrawField();
+DisplayAprilTags();
