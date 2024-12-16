@@ -1,13 +1,9 @@
-//include <CenterStageField.scad>
+include <Dimensions_7462.scad>
 
-PRINT_SCALER = 1;  // SET TO 1 FOR INCHES, 25.4 FOR MM
-
-ROBOT_LENGTH = 15.0*PRINT_SCALER;
-ROBOT_WIDTH  = 15.0*PRINT_SCALER;
-CHAMF        = 1.0*PRINT_SCALER;
-ROBOT_HEIGHT = 2*PRINT_SCALER;
-WHEEL_LEN    = 1.4*PRINT_SCALER;
-WHEEL_WID    = 2.0*PRINT_SCALER;
+CHAMF         = 1.0*PRINT_SCALER;
+ROBOT_HEIGHT  = 2*PRINT_SCALER;
+WHEEL_LEN     = 1.4*PRINT_SCALER;
+WHEEL_WID     = 2.0*PRINT_SCALER;
 
 module robot_2D() {        
     difference() {
